@@ -13,7 +13,7 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 1024, height: 768});
+  mainWindow = new BrowserWindow({width: 1024, height: 768, top: 40, left: 40});
 
   mainWindow.loadUrl(Path.join('file://', __dirname, 'dist/index.html'));
   mainWindow.openDevTools();

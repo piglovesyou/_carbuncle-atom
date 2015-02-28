@@ -3,6 +3,10 @@ var _mixins = require('./_mixins');
 var React = require('react');
 var Actions = require('../actions');
 var Link = require('../components/Link');
+var Nav = require('../components/Nav');
+var Editor = require('../components/Editor');
+var IFrame = require('../components/IFrame');
+var Scenario = require('../components/Scenario');
 
 var Store = require('../stores');
 
@@ -19,10 +23,13 @@ var Index = React.createClass({
 
   render() {
     return (
-      <div className="app-index container">
-        <h1><i className="fa fa-diamond"></i> Index</h1>
-        <button className="btn" onClick={this.onClick}>Clicked {this.state.count} times</button>&nbsp;
-        <Link href="/setting">Setting</Link>
+      <div className="app-index">
+        <Nav />
+        <Editor />
+        <div className="bottom-content">
+          <IFrame></IFrame>
+          <Scenario></Scenario>
+        </div>
       </div>
     );
   },
