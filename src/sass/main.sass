@@ -2,8 +2,11 @@
 $fa-font-path: "./fonts"
 
 // http://imperavi.com/kube/css/labels
-$gray-base: #565d64
-$gray-dark: lighten($gray-base, 20%)
+$gray: #565d64
+$gray-darker: darken($gray, 30%)
+$gray-dark: darken($gray, 10%)
+$gray-light: lighten($gray, 10%)
+$gray-lighter: lighten($gray, 30%)
 
 $font-size-base: 16px
 
@@ -21,12 +24,14 @@ $btn-default-color: $gray-dark
 $btn-default-bg: #e0e3e5
 $btn-default-border: darken(#e0e3e5, 5%)
 
+$grid-gutter-width: 8px
 
+$input-color-placeholder: $gray-lighter
 
 $navbar-default-bg: transparent
-$navbar-default-brand-color: $gray-base
-$navbar-default-color: $gray-base
-$navbar-default-link-color: $gray-base
+$navbar-default-brand-color: $gray
+$navbar-default-color: $gray
+$navbar-default-link-color: $gray
 $navbar-margin-bottom: 0
 
 
@@ -56,6 +61,9 @@ body,
   $border-color: #999
   border-top: 3px $border-color solid
   border-right: 3px $border-color solid
+.iframe--isSelectingElement
+  position: relative
+  z-index: 2
 .iframe__form
   display: flex
   height: 34px
@@ -64,6 +72,7 @@ body,
 .iframe__iframe
   flex: 1
   border: 0
+  background-color: #fff
 
 .navbar
   border: none
@@ -73,14 +82,34 @@ body,
   text-align: center
 
 .editor
-  padding: .8em 1.4em
+  padding: 16px 24px
   background: whitesmoke
+  .form-group:last-child
+    margin-bottom: 0
+.editor-topinputs
+  input[type="text"]
+    vertical-align: top
+
+.editor-bottominputs .btn
+  float: left
+  margin-left: $grid-gutter-width / 2
+  margin-right: $grid-gutter-width / 2
 
 .scenario
   border-top: 1px #ccc solid
   display: flex
   flex-direction: column
-  width: 340px
+  width: 40%
+  max-width: 480px
 
 .scenario__body
   flex: 1
+
+.mask
+  position: absolute
+  width: 100%
+  height: 100%
+  background-color: rgba(0,0,0,.1)
+  top: 0
+  left: 0
+  z-index: 1

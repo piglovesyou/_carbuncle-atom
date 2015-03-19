@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "main": "main.js",
   "scripts": {
-    "postinstall": "mkdir -p public/{js,css}; bower install",
+    "postinstall": "mkdir -p public/{js,css}; bower install; npm run build",
     "watch": "gulp watch",
-    "build": "gulp",
+    "plovr": "plovr build plovr.json",
+    "build": "npm run plovr && gulp",
     "test": "eslint src && gulp"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^1.1.0",
     "object-assign": "^2.0.0",
+    "plovr": "^3.0.1",
     "react": "^0.12.2",
     "react-router": "^0.11.6",
     "reactify": "^1.0.0",

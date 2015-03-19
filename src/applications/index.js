@@ -7,10 +7,18 @@ var Nav = require('../components/Nav');
 var Editor = require('../components/Editor');
 var IFrame = require('../components/IFrame');
 var Scenario = require('../components/Scenario');
+var Mask = require('../components/Mask');
 
 var Store = require('../stores');
 
 var Index = React.createClass({
+  
+  getInitialState() {
+    // Application Context
+    return {
+      isSelectingElement: false
+    }
+  },
 
   createState() {
     var store = Store.get();
@@ -25,19 +33,22 @@ var Index = React.createClass({
     return (
       <div className="app-index">
         <Nav />
-        <Editor />
+        <Editor onStartSelectElement={enableSelectElement.bind(this, true)} />
         <div className="bottom-content">
-          <IFrame></IFrame>
+          <IFrame cssModifier={this.state.isSelectingElement ? 'isSelectingElement' : null}></IFrame>
           <Scenario></Scenario>
         </div>
+        {this.state.isSelectingElement ? <Mask onCancel={enableSelectElement.bind(this, false)} /> : null}
       </div>
     );
-  },
-
-  onClick() {
-    Actions.increment();
   }
 
 });
 
 module.exports = Index;
+
+function enableSelectElement(enable) {
+  this.setState({
+    isSelectingElement: enable
+  });
+}
